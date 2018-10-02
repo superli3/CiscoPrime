@@ -18,7 +18,7 @@ page_count = 0
 #API looks at 1000 devices at a time (e.g. first 1000, then 1000-2000, 2000-3000, etc. If the page count exceeds the number of devices, the API will error out, so set as appropriate
 while page_count < 6000:
 	urllib3.disable_warnings()
-	resp = requests.get('https://user_name:password@cisco_prime_url/webacs/api/v3/data/AccessPointDetails.json?.full=true&.maxResults=1000&.firstResult=' + str(page_count), verify=False)
+	resp = requests.get('https://user_name:password@cisco_prime_url/webacs/api/v1/data/AccessPointDetails.json?.full=true&.maxResults=1000&.firstResult=' + str(page_count), verify=False)
 	data = resp.json()
 	f.write(json.dumps(data, indent=2, sort_keys=True))
 	page_count += 1000;
